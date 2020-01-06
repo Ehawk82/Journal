@@ -1,0 +1,22 @@
+{
+  "name": "journal",
+  "version": "1.0.0",
+  "description": "An app with emotional wellness and self-care routine themes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ehawk82/Journal.git"
+  },
+  "author": "Jason Graziano",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Ehawk82/Journal/issues"
+  },
+  "homepage": "https://github.com/Ehawk82/Journal#readme",
+  "devDependencies": {
+    "gscript2020": "git+https://github.com/Ehawk82/gScript2020.git"
+  }
+}
