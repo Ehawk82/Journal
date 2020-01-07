@@ -35,6 +35,7 @@ myUI = {
 		startBtn.innerHTML = "▶️";
 		startBtn.onclick = myUI.startProgram(jData,startMenu);
 
+		startMenu.className = "startMenu";
 		startMenu.append(startBtn);
 
 		body.appendChild(startMenu);
