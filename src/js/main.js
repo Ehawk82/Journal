@@ -39,6 +39,10 @@ myUI = {
 		startMenu.append(startBtn);
 
 		body.appendChild(startMenu);
+
+		setTimeout(function(){
+			makeFull(startMenu);
+		},100);
 	},
 	startProgram: function(jData,startMenu){
 		return function(){
@@ -58,6 +62,10 @@ myUI = {
 			}
 
 			body.appendChild(toolHolder);
+
+			setTimeout(function(){
+				makeFull(toolHolder);
+			},100);
 		}
 	}
 };
