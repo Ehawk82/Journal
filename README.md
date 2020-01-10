@@ -81,7 +81,7 @@ ____
 - [ ] Other tools to be added in the coming weeks
 
 
-![Progress](https://progress-bar.dev/1/)
+![Progress](https://progress-bar.dev/3/)
 
 [Contents](#contents)
 
