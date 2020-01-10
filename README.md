@@ -137,12 +137,18 @@ When a user is viewing the archive, they will have the option to set goals for f
 
 ## Tasking
 
+Element development, styling, and scripting will be mandated by Jason Graziano. Consultants include members of the peer support team.
+
 [Contents](#contents)
 
 ## Settings
 
+Settings to be configured after meeting.
+
 [Contents](#contents)
 
 ## Credits
+
+Dev: Ehawk LLC
 
 [Contents](#contents)
