@@ -31,6 +31,14 @@ ____
 
 ## Basics
 
+1. Journaling: A user will have the ability to privately write, store, track content entered by the user via a series of questions.
+2. Questions: A user will be prompted several questions about daily activities, diet, relationships, etc to gain specific criteria for the journal entry.
+3. Journal Entries: As time goes on, daily use can yeild a long term repository of personal thoughts. Security is key.
+4. Security: For now, the data is stored in JSON on local storage API mainly just to get something working. In the future, the Todo outline will encourage a more secure path.
+5. To Do list: We will track development progress via this readme in the TODO section.
+6. Development: The UI will be flat, easy to use, minimally animated with CSS3 transitions.
+7. 
+
 [Contents](#contents)
 
 ## Todo
