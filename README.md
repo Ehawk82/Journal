@@ -61,24 +61,24 @@ ____
 
 ## Todo
 
-[x] Import personal node_module
-[x] Initialize user JSON 
-[x] Start button
-[x] Tools holder
-[x] Can go fullscreen
-[x] Can close fullscreen
-[ ] Archives button -> archives page
-[ ] Daily file startup
-[ ] Questionaire JSON
-[ ] Moods button -> moods page
-[ ] Date checker to check and save each date daily
-[ ] Previous daily task gets copied on to archive when the date doesn't match the date checker
-[ ] Active daily task page appears on home page, if not completed, missing elements will collect in the home page display
-[ ] Journal feature(textarea)
-[ ] Task/Scenario goals button -> page 
-[ ] Delete archived file button - warn page
-[ ] Secure Storage
-[ ] Other tools to be added in the coming weeks
+- [x] Import personal node_module
+- [x] Initialize user JSON 
+- [x] Start button
+- [x] Tools holder
+- [x] Can go fullscreen
+- [x] Can close fullscreen
+- [ ] Archives button -> archives page
+- [ ] Daily file startup
+- [ ] Questionaire JSON
+- [ ] Moods button -> moods page
+- [ ] Date checker to check and save each date daily
+- [ ] Previous daily task gets copied on to archive when the date doesn't match the date checker
+- [ ] Active daily task page appears on home page, if not completed, missing elements will collect in the home page display
+- [ ] Journal feature(textarea)
+- [ ] Task/Scenario goals button -> page 
+- [ ] Delete archived file button - warn page
+- [ ] Secure Storage
+- [ ] Other tools to be added in the coming weeks
 
 
 ![Progress](https://progress-bar.dev/1/)
