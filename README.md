@@ -20,21 +20,21 @@ ____
 
 ## Basics
 
-+ [Contents](#contents)
+[Contents](#contents)
 
 ## Todo
 
 ![Progress](https://progress-bar.dev/10/)
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Languages
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Outline
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Theme
 
@@ -42,28 +42,28 @@ ____
 
 ## Journaling
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Tracking
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Goals
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Tools
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Tasking
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Settings
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Credits
 
-- [Contents](#contents)
+[Contents](#contents)
