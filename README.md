@@ -18,50 +18,50 @@
   13. [Credits](#credits)
 ____
 
-# Basics
+## Basics
 
 - [Contents](#contents)
 
-# Todo
+## Todo
 
 - [Contents](#contents)
 
-# Languages
+## Languages
 
 - [Contents](#contents)
 
-# Outline
+## Outline
 
 - [Contents](#contents)
 
-# Theme
+## Theme
 
 - [Contents](#contents)
 
-# Journaling
+## Journaling
 
 - [Contents](#contents)
 
-# Tracking
+## Tracking
 
 - [Contents](#contents)
 
-# Goals
+## Goals
 
 - [Contents](#contents)
 
-# Tools
+## Tools
 
 - [Contents](#contents)
 
-# Tasking
+## Tasking
 
 - [Contents](#contents)
 
-# Settings
+## Settings
 
 - [Contents](#contents)
 
-# Credits
+## Credits
 
 - [Contents](#contents)
