@@ -20,9 +20,11 @@ ____
 
 ## Basics
 
-- [Contents](#contents)
++ [Contents](#contents)
 
 ## Todo
+
+![Progress](https://progress-bar.dev/10/)
 
 - [Contents](#contents)
 
