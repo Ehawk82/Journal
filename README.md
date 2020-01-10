@@ -4,18 +4,18 @@
     
 # Contents
 
-  1. [Basics](#basics)
-  2. [TODO](#todo)
-  3. [Languages](#languages)
-  5. [Outline](#outline)
-  6. [Theme](#theme)
-  7. [Journaling](#journaling)
-  8. [Tracking](#tracking)
-  9. [Goals](#goals)
-  10. [Tools](#tools)
-  11. [Tasking](#tasking)
-  12. [Settings](#settings)
-  13. [Credits](#credits)
+  - [Basics](#basics)
+  - [TODO](#todo)
+  - [Languages](#languages)
+  - [Outline](#outline)
+  - [Theme](#theme)
+  - [Journaling](#journaling)
+  - [Tracking](#tracking)
+  - [Goals](#goals)
+  - [Tools](#tools)
+  - [Tasking](#tasking)
+  - [Settings](#settings)
+  - [Credits](#credits)
 ____
 
 ## Basics
@@ -38,7 +38,7 @@ ____
 
 ## Theme
 
-- [Contents](#contents)
+[Contents](#contents)
 
 ## Journaling
 
