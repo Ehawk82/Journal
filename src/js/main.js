@@ -46,11 +46,13 @@ myUI = {
 	},
 	startProgram: function(jData,startMenu){
 		return function(){
-			var toolHolder = createEle("div");
+			var toolHolder = createEle("div"),
+				homePage = createEle("div");
 
 			startMenu.remove();
 
 			toolHolder.className = "toolHolder";
+
 			for (var i = 0; i < toolCount; i++) {
 				var tools = createEle("button");
 
@@ -58,13 +60,16 @@ myUI = {
 				tools.onclick = toolFuncs[i];
 
 				toolHolder.appendChild(tools);
-
 			}
 
-			body.appendChild(toolHolder);
+			homePage.innerHTML = "text and stuff";
+			homePage.className = "homePage";
+
+			body.append(toolHolder,homePage);
 
 			setTimeout(function(){
 				makeFull(toolHolder);
+				makeFull(homePage);
 			},100);
 		}
 	}

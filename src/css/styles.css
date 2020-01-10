@@ -7,20 +7,33 @@ body {
 	overflow: hidden;
 }
 button {
-	height: 40px;
-	width:40px;
+	height: 5vh;
+	width: 40px;
 }
 /*CLASS*/
 .toolHolder {
-	background-color: rgba(150,150,150,1);
+	background-color: rgba(10,10,10,0);
 	top:-100px;
+	height: 5vh;
+
 }
 .toolHolder_full {
-	background-color: rgba(150,150,150,1);
 	top:0;
+	height: 5vh;
+
 }
 .toolHolder button {
 	margin-right: 
+}
+.homePage {
+	background-color: rgba(10,10,10,0);
+	bottom:-100vh;
+	height: 95vh;
+
+}
+.homePage_full {
+	bottom:0;
+	height: 95vh;
 }
 .startMenu {
 	top:10vh;
@@ -39,18 +52,27 @@ button {
 /*ID*/
 
 /*MULTIS*/
+.toolHolder_full,.homePage_full {
+	background-color: rgba(10,10,10,1);
+	box-shadow: 0 0 1px silver inset,0 0 2px silver inset;
+}
+.toolHolder,.homePage {
+	background-color: rgba(10,10,10,1);
+	box-shadow: 0 0 1px silver inset,0 0 2px silver inset;
+
+}
 .toolHolder_full,.toolHolder {
 	text-align: right;
 }
-.toolHolder_full,.toolHolder {
+.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	width:100vw;
 }
-.startMenu, .startMenu_full{
+.startMenu, .startMenu_full,.homePage_full,.homePage {
 	text-align: center;
 }
-.startMenu, .startMenu_full,.toolHolder_full,.toolHolder {
+.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	position: absolute;
 }
-.startMenu, .startMenu_full,.toolHolder_full,.toolHolder {
+.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	transition: 1s all;
 }
