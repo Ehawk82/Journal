@@ -5,16 +5,27 @@
 # Contents
 
   - [Basics](#basics)
+  
   - [TODO](#todo)
+  
   - [Languages](#languages)
+  
   - [Outline](#outline)
+  
   - [Theme](#theme)
+  
   - [Journaling](#journaling)
+  
   - [Tracking](#tracking)
+  
   - [Goals](#goals)
+  
   - [Tools](#tools)
+  
   - [Tasking](#tasking)
+  
   - [Settings](#settings)
+  
   - [Credits](#credits)
 ____
 
@@ -24,7 +35,7 @@ ____
 
 ## Todo
 
-![Progress](https://progress-bar.dev/10/)
+![Progress](https://progress-bar.dev/1/)
 
 [Contents](#contents)
 
