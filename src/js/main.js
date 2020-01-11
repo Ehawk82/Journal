@@ -1,8 +1,5 @@
-var myUI, jdata, toolNames, toolFuncs, toolCount = 2;
+var myUI, jdata;
 
-toolNames = ["⬜", "◻️"];
-
-toolFuncs = [ openFullscreen(), closeFullScreen()];
 
 jdata = {
 	timestamp: 0,
@@ -47,20 +44,23 @@ myUI = {
 	startProgram: function(jData,startMenu){
 		return function(){
 			var toolHolder = createEle("div"),
-				homePage = createEle("div");
+				homePage = createEle("div"),
+				ofs = createEle("button");
+				cfs = createEle("button");
 
 			startMenu.remove();
 
 			toolHolder.className = "toolHolder";
 
-			for (var i = 0; i < toolCount; i++) {
-				var tools = createEle("button");
+			ofs.innerHTML = "⬜";
+		    ofs.onclick = openFullscreen(ofs,cfs);
+		    ofs.disabled = false;
 
-				tools.innerHTML = toolNames[i];
-				tools.onclick = toolFuncs[i];
+		    cfs.innerHTML = "◻️";
+		    cfs.onclick = closeFullScreen(cfs,ofs);
+		    cfs.disabled = true;
 
-				toolHolder.appendChild(tools);
-			}
+			toolHolder.append(ofs,cfs);
 
 			homePage.innerHTML = "text and stuff";
 			homePage.className = "homePage";
@@ -72,6 +72,9 @@ myUI = {
 				makeFull(homePage);
 			},100);
 		}
+	},
+	evalSize: function(){
+		console.log("full");
 	}
 };
 

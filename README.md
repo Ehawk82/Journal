@@ -79,6 +79,7 @@ ____
 - [ ] Delete archived file button - warn page
 - [ ] Secure Storage
 - [ ] Other tools to be added in the coming weeks
+- [x] Make goFullScreen and closeFullScreen buttons disabled/abled after invoke/unlock
 
 
 ![Progress](https://progress-bar.dev/3/)

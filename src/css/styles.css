@@ -22,8 +22,13 @@ button {
 	height: 5vh;
 
 }
-.toolHolder button {
-	margin-right: 
+.toolHolder_full button {
+	margin-right: 0; 
+	opacity: 1;
+	height: -webkit-fill-available;
+}
+.toolHolder_full button:disabled {
+	opacity: 0.4;
 }
 .homePage {
 	background-color: rgba(10,10,10,0);
@@ -54,7 +59,7 @@ button {
 /*MULTIS*/
 .toolHolder_full,.homePage_full {
 	background-color: rgba(10,10,10,1);
-	box-shadow: 0 0 1px silver inset,0 0 2px silver inset;
+	box-shadow: 0 0 1px silver inset;
 }
 .toolHolder,.homePage {
 	background-color: rgba(10,10,10,1);
