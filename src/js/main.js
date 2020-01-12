@@ -113,6 +113,7 @@ myUI = {
 			var jj = jData.journal,
 				tx = txArea.value.trim(),
 				je = jData.journalEntries + 1,
+				jd = JSON.stringify(jData),
 				ts = d.getTime(),
 				arr = [ 
 					je = {
@@ -120,29 +121,28 @@ myUI = {
 						"content": tx
 					}
 				];
-				Array.prototype.push.apply(jj, arr);
+			Array.prototype.push.apply(jj, arr);
 
-				jData.journal = jj;
+			jData.journal = jj;
 
-				jData.journalEntries++;
-				
-				saveLS("jData", jData);
-
-				var blob = new Blob([JSON.stringify(jData)], {type : 'application/json'});
-
-				var dta = URL.createObjectURL(blob);
-
-				var fso = new ActiveXObject("Scripting.FileSystemObject");
-				var a = fso.CreateTextFile("src/js/testfile.txt", true);
-				a.WriteLine(blob);
-				a.Close();
-
-				txArea.value = "";
-				jEntry.disabled = true;
-
-
+			jData.journalEntries++;
 			
-		}
+			saveLS("jData", jData);
+
+			setTimeout(function(){
+				myUI.invokeDownload(jd,ts);
+			},10);
+
+			txArea.value = "";
+			jEntry.disabled = true;
+		};
+
+
+	},
+	invokeDownload: function(jd,ts){
+		var file = new File([jd], "jData_" + ts + ".txt", {type: "text/plain;charset=utf-6"});
+
+		saveAs(file);
 	},
 	evalSize: function(){
 		console.log("full");
