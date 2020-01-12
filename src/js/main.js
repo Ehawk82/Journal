@@ -125,8 +125,17 @@ myUI = {
 				jData.journal = jj;
 
 				jData.journalEntries++;
-
+				
 				saveLS("jData", jData);
+
+				var blob = new Blob([JSON.stringify(jData)], {type : 'application/json'});
+
+				var dta = URL.createObjectURL(blob);
+
+				var fso = new ActiveXObject("Scripting.FileSystemObject");
+				var a = fso.CreateTextFile("src/js/testfile.txt", true);
+				a.WriteLine(blob);
+				a.Close();
 
 				txArea.value = "";
 				jEntry.disabled = true;
