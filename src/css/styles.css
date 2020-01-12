@@ -65,8 +65,18 @@ textarea {
 }
 .dailyGrid textarea {
 	position: relative;
-	height: -webkit-fill-available;
+	height: 30vh;
 	width: -webkit-fill-available;
+}
+.dailyGrid button {
+	position: relative;
+	height: 10vh;
+	width: -webkit-fill-available;
+	opacity: 1;
+}
+.dailyGrid button:disabled {
+	opacity: 0.4;
+
 }
 /*ID*/
 
