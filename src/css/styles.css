@@ -10,6 +10,9 @@ button {
 	height: 5vh;
 	width: 40px;
 }
+textarea {
+  resize: none;
+}
 /*CLASS*/
 .toolHolder {
 	background-color: rgba(10,10,10,0);
@@ -54,6 +57,17 @@ button {
 	line-height: 80vh;
 	opacity: 1;
 }
+.dailyGrid {
+	width: 80vw;
+	height:40vh;
+	top:1vh; 
+	left:10vw;
+}
+.dailyGrid textarea {
+	position: relative;
+	height: -webkit-fill-available;
+	width: -webkit-fill-available;
+}
 /*ID*/
 
 /*MULTIS*/
@@ -75,7 +89,7 @@ button {
 .startMenu, .startMenu_full,.homePage_full,.homePage {
 	text-align: center;
 }
-.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
+.dailyGrid,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	position: absolute;
 }
 .startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
