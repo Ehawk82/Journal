@@ -1,4 +1,9 @@
 /*DOM*/
+html,body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   	font-weight: 700;
+   	font-size: 1rem;
+}
 body {
 	background-color: rgba(0,0,0,1);
 	color:rgba(230,230,230,1);
@@ -8,7 +13,9 @@ body {
 }
 button {
 	height: 5vh;
-	width: 40px;
+	width: 5vh;
+   	font-size: 1rem;
+   	text-align:center;
 }
 textarea {
   resize: none;
@@ -58,7 +65,7 @@ textarea {
 	opacity: 1;
 }
 .dailyGrid {
-	width: 80vw;
+	width: 40vw;
 	height:40vh;
 	top:1vh; 
 	left:10vw;

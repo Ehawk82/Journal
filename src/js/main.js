@@ -9,7 +9,8 @@ jdata = {
 	collections: {},
 	uBool: false,
 	name: "",
-	journal: {},
+	journal: [],
+	journalEntries: 0,
 	dateGrid: {},
 	steps: 10,
 	mood: 5,
@@ -80,7 +81,7 @@ myUI = {
 
 			jEntry.innerHTML = "SUBMIT";
 			jEntry.disabled = true;
-			jEntry.onclick = myUI.runForm(jData, txArea, jEntry);
+			jEntry.onclick = myUI.runForm(jData, txArea, jEntry, d);
 
 			dailyGrid.className = "dailyGrid";
 			dailyGrid.append(txArea,jEntry);
@@ -107,13 +108,31 @@ myUI = {
 			}
 		}
 	},
-	runForm: function(jData, txArea, jEntry){
+	runForm: function(jData, txArea, jEntry, d){
 		return function(){
-			var tx = txArea.value.trim();
+			var jj = jData.journal,
+				tx = txArea.value.trim(),
+				je = jData.journalEntries + 1,
+				ts = d.getTime(),
+				arr = [ 
+					je = {
+						"entryID": ts,
+						"content": tx
+					}
+				];
+				Array.prototype.push.apply(jj, arr);
 
-			console.log(jData);
+				jData.journal = jj;
 
-			console.log(tx);
+				jData.journalEntries++;
+
+				saveLS("jData", jData);
+
+				txArea.value = "";
+				jEntry.disabled = true;
+
+
+			
 		}
 	},
 	evalSize: function(){
