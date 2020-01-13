@@ -18,8 +18,5 @@
   "homepage": "https://github.com/Ehawk82/Journal#readme",
   "devDependencies": {
     "gscript2020": "git+https://github.com/Ehawk82/gScript2020.git"
-  },
-  "dependencies": {
-    "file-saver": "^2.0.2"
   }
 }

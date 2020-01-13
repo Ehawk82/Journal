@@ -129,10 +129,6 @@ myUI = {
 			
 			saveLS("jData", jData);
 
-			setTimeout(function(){
-				myUI.invokeDownload(jd,ts);
-			},10);
-
 			txArea.value = "";
 			jEntry.disabled = true;
 		};
