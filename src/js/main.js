@@ -59,6 +59,7 @@ myUI = {
 				ofs = createEle("button"),
 				cfs = createEle("button"),
 				dailyGrid = createEle("div"),
+				dailyBlob = createEle("div"),
 				txArea = createEle("textarea"),
 				jEntry = createEle("button");
 
@@ -86,8 +87,11 @@ myUI = {
 			dailyGrid.className = "dailyGrid";
 			dailyGrid.append(txArea,jEntry);
 
+			dailyBlob.className = "dailyBlob";
+			dailyBlob.append("test");
+
 			homePage.className = "homePage";
-			homePage.append(dailyGrid);
+			homePage.append(dailyGrid,dailyBlob);
 
 			body.append(toolHolder,homePage);
 
@@ -132,8 +136,6 @@ myUI = {
 			txArea.value = "";
 			jEntry.disabled = true;
 		};
-
-
 	},
 	invokeDownload: function(jd,ts){
 		var file = new File([jd], "jData_" + ts + ".txt", {type: "text/plain;charset=utf-6"});

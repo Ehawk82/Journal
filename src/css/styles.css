@@ -14,7 +14,6 @@ body {
 button {
 	height: 5vh;
 	width: 5vh;
-   	font-size: 1rem;
    	text-align:center;
 }
 textarea {
@@ -64,15 +63,24 @@ textarea {
 	line-height: 80vh;
 	opacity: 1;
 }
-.dailyGrid {
+.dailyBlob {
+	background-color: pink;
 	width: 40vw;
-	height:40vh;
+	height:fit-content;
 	top:1vh; 
-	left:10vw;
+	right:5vw;
+}
+.dailyGrid {
+	background-color: pink;
+	width: 40vw;
+	height:fit-content;
+	top:1vh; 
+	left:5vw;
 }
 .dailyGrid textarea {
 	position: relative;
 	height: 30vh;
+	margin:0;
 	width: -webkit-fill-available;
 }
 .dailyGrid button {
@@ -106,7 +114,7 @@ textarea {
 .startMenu, .startMenu_full,.homePage_full,.homePage {
 	text-align: center;
 }
-.dailyGrid,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
+.dailyBlob,.dailyGrid,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	position: absolute;
 }
 .startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
