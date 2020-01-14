@@ -11,6 +11,18 @@ body {
 	padding: 0;
 	overflow: hidden;
 }
+::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
 button {
 	height: 5vh;
 	width: 5vh;
@@ -19,6 +31,8 @@ button {
 textarea {
   resize: none;
 }
+
+
 /*CLASS*/
 .toolHolder {
 	background-color: rgba(10,10,10,0);
@@ -64,18 +78,18 @@ textarea {
 	opacity: 1;
 }
 .dailyBlob {
-	background-color: pink;
-	width: 40vw;
-	height:fit-content;
-	top:1vh; 
-	right:5vw;
+	width: 45vw;
+	height:90vh;
+	top:2vh;
+	right:4vw;
+	overflow: hidden;
+
 }
 .dailyGrid {
-	background-color: pink;
-	width: 40vw;
+	width: 45vw;
 	height:fit-content;
-	top:1vh; 
-	left:5vw;
+	top:2vh;
+	left:4vw;
 }
 .dailyGrid textarea {
 	position: relative;
@@ -93,9 +107,36 @@ textarea {
 	opacity: 0.4;
 
 }
+.blobHolder {
+	width: -webkit-fill-available;
+	height: -webkit-fill-available;
+	margin:.5vh .5vw;
+	background-color: white;
+	color:black;
+	overflow: auto;
+}
+.blobHolder p {
+	box-shadow: 0 0 2px black;
+	margin:.6vh .6vw;
+	padding: 1.3vh 1.3vw;
+	text-align: left;
+	opacity: .7;
+}
+.blobHolder p:hover {
+	opacity: 1;
+}
+.labels {
+	background-color: silver;
+	width: -webkit-fill-available;
+	padding: 1vh 1vw;
+	cursor: default;
+}
 /*ID*/
 
 /*MULTIS*/
+.dailyBlob,.dailyGrid {
+	background-color: silver;
+}
 .toolHolder_full,.homePage_full {
 	background-color: rgba(10,10,10,1);
 	box-shadow: 0 0 1px silver inset;
@@ -117,6 +158,6 @@ textarea {
 .dailyBlob,.dailyGrid,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	position: absolute;
 }
-.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
+.labels,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	transition: 1s all;
 }

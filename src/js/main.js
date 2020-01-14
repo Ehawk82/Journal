@@ -60,6 +60,7 @@ myUI = {
 				cfs = createEle("button"),
 				dailyGrid = createEle("div"),
 				dailyBlob = createEle("div"),
+				blobHolder = createEle("div"),
 				txArea = createEle("textarea"),
 				jEntry = createEle("button");
 
@@ -77,18 +78,21 @@ myUI = {
 
 			toolHolder.append(ofs,cfs);
 
-			txArea.placeholder = "Journal entry for " + days[wkDay] + ", " + months[mnths] + " " + day[dy] + ", " + yr + ".";
+			txArea.placeholder = "Journal entry for " + days[wkDay] + ", " + months[mnths] + " " + day[dy] + ", " + yr;
 			txArea.onkeyup = myUI.validateText(jData, txArea, jEntry);
 
 			jEntry.innerHTML = "SUBMIT";
 			jEntry.disabled = true;
-			jEntry.onclick = myUI.runForm(jData, txArea, jEntry, d);
+			jEntry.onclick = myUI.runForm(jData, txArea, jEntry, blobHolder);
+
+			blobHolder.className = "blobHolder";
+			blobHolder.onload = myUI.updateBlob(jData,blobHolder,d);
 
 			dailyGrid.className = "dailyGrid";
 			dailyGrid.append(txArea,jEntry);
 
 			dailyBlob.className = "dailyBlob";
-			dailyBlob.append("test");
+			dailyBlob.append(blobHolder);
 
 			homePage.className = "homePage";
 			homePage.append(dailyGrid,dailyBlob);
@@ -101,6 +105,54 @@ myUI = {
 			},100);
 		}
 	},
+	updateBlob: function(jData,blobHolder,d){
+		for (var i = 0; i < jData.journalEntries; i++) {
+			var bObj = createEle("p"),
+				jDate = jData.journal[i].entryID,
+				date = new Date(jDate),
+				hr = date.getHours(),
+				min = date.getMinutes(),
+				sec = date.getSeconds(),
+			    wkDay = date.getDay(),
+				mnths = date.getMonth(),
+				dy = date.getDate(),
+				yr = date.getFullYear(),
+				label = createEle("div");
+
+			if (hr   < 10) {hr   = "0"+hr;}
+    		if (min < 10) {min = "0"+min;}
+    		if (sec < 10) {sec = "0"+sec;}
+
+			label.innerHTML = months[mnths]+" "+day[dy]+", "+yr+" at "+hr+":"+ min +":"+sec;
+			label.className = "labels";
+			label.style.opacity = 0;
+			label.style.transitionDelay = i+"00ms";
+
+			bObj.append(label);
+
+			blobHolder.append(bObj);
+		}
+		myUI.reverseList(blobHolder);
+	},
+	reverseList: function(blobHolder){
+		var blobC = blobHolder.childNodes;
+		
+		setTimeout(function(){
+			for (var i = 0; i < blobC.length; i++){
+	        	var blobCC = blobC[i].childNodes;
+	        	for (var k = 0; k < blobCC.length; k++) {
+	        		blobCC[k].style.opacity = 1;
+	        	}
+	        	
+	        	
+	        	//blobCC[i].style.opacity = 1;
+				setTimeout(function(){
+			        blobHolder.insertBefore(blobC[i], blobHolder.firstChild);
+		    	},i + 1000);
+	        	
+	    	}
+    	},200);
+	},
 	validateText: function(jData, txArea, jEntry){
 		return function() {
 			var tx = txArea.value.trim();
@@ -112,8 +164,9 @@ myUI = {
 			}
 		}
 	},
-	runForm: function(jData, txArea, jEntry, d){
+	runForm: function(jData, txArea, jEntry, blobHolder){
 		return function(){
+			var d = new Date();
 			var jj = jData.journal,
 				tx = txArea.value.trim(),
 				je = jData.journalEntries + 1,
@@ -135,6 +188,8 @@ myUI = {
 
 			txArea.value = "";
 			jEntry.disabled = true;
+			blobHolder.innerHTML = " ";
+			myUI.updateBlob(jData,blobHolder,d);
 		};
 	},
 	invokeDownload: function(jd,ts){
