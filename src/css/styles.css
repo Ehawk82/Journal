@@ -1,8 +1,91 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.dailyBlob {
+		width: 90vw;
+		margin:1vh auto;
+		position: relative;
+	}
+	.dailyGrid {
+		width: 90vw;
+		position: relative;
+		margin:1vh auto;
+	}
+	.homePage_full {
+		overflow-y: scroll;
+
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.dailyBlob {
+		width: 90vw;
+		position: relative;
+		margin:1vh auto;
+	}
+	.dailyGrid {
+		width: 90vw;
+		position: relative;
+		margin:1vh auto;
+	}
+	.homePage_full {
+		overflow-y: scroll;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.dailyBlob {
+		width: 48vw;
+		position: absolute;
+		top:1vh;
+		right:0;
+	}
+	.dailyGrid {
+		width: 47vw;
+		position: absolute;
+		top:1vh;
+		left:2vw;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.dailyBlob {
+		width: 46vw;
+		position: absolute;
+		top:1vh;
+		right:2vw;
+	}
+	.dailyGrid {
+		width: 46vw;
+		position: absolute;
+		top:1vh;
+		left:2vw;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	.dailyBlob {
+		width: 45vw;
+		position: absolute;
+		top:1vh;
+		right: 3vw;
+	}
+	.dailyGrid {
+		position: absolute;
+		width: 45vw;
+		top:1vh;
+		left:3vw;
+	}
+}
+
 /*DOM*/
 html,body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    	font-weight: 700;
-   	font-size: 1rem;
+   	font-size: 1em;
 }
 body {
 	background-color: rgba(0,0,0,1);
@@ -12,7 +95,7 @@ body {
 	overflow: hidden;
 }
 ::-webkit-scrollbar {
-  width: 1em;
+  width: .5em;
 }
  
 ::-webkit-scrollbar-track {
@@ -22,14 +105,15 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
+
 }
 button {
-	height: 5vh;
-	width: 5vh;
+	height: 10vh;
+	width: 10vh;
    	text-align:center;
 }
 textarea {
-  resize: none;
+  	resize: none;
 }
 
 
@@ -46,7 +130,7 @@ textarea {
 
 }
 .toolHolder_full button {
-	margin-right: 0; 
+	margin-right: .5vw; 
 	opacity: 1;
 	height: -webkit-fill-available;
 }
@@ -78,18 +162,12 @@ textarea {
 	opacity: 1;
 }
 .dailyBlob {
-	width: 45vw;
 	height:90vh;
-	top:2vh;
-	right:4vw;
 	overflow: hidden;
-
 }
 .dailyGrid {
-	width: 45vw;
 	height:fit-content;
-	top:2vh;
-	left:4vw;
+
 }
 .dailyGrid textarea {
 	position: relative;
@@ -155,9 +233,10 @@ textarea {
 .startMenu, .startMenu_full,.homePage_full,.homePage {
 	text-align: center;
 }
-.dailyBlob,.dailyGrid,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
+.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	position: absolute;
 }
+
 .bObj,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	transition: 1s all;
 }
