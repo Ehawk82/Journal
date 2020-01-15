@@ -45,3 +45,18 @@ function parseSS(x) { var y = loadSS(x), z = JSON.parse(y); return z };
 function clearSS() { return sessionStorage.clear() };
 function removeSSitem(x) { return sessionStorage.removeItem(x) };
 function SSinit(x,y) {var keyname = sessionStorage.getItem(x);if (!keyname || keyname === null) {sessionStorage.setItem(x, JSON.stringify(y));} else {var k = x.split("user_");var g = +k[1];g++;var i = x.split(k[1]);var z = i[0] + g;}};
+
+/*Date Formating*/
+function formatDateObject(x){
+	var date = new Date(x),
+		year = date.getFullYear(),
+		month = date.getMonth(),
+		day = date.getDate(),
+		weekDay = date.getDay(),
+		hour = date.getHour(),
+		minutes = date.getMinute(),
+		seconds = date.getSeconds(),
+		formatedDate = weekDay+" "+month+" "+day+", "+year+" - "+hour+":"+minutes+":"+seconds; 
+
+	return formatedDate;
+}

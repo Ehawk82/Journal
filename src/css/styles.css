@@ -113,21 +113,21 @@ textarea {
 	margin:.5vh .5vw;
 	background-color: white;
 	color:black;
-	overflow: auto;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .blobHolder p {
-	box-shadow: 0 0 2px black;
-	margin:.6vh .6vw;
+	box-shadow: 0 0 2px black inset;
+	margin:1vh 1vw;
 	padding: 1.3vh 1.3vw;
 	text-align: left;
-	opacity: .7;
 }
 .blobHolder p:hover {
-	opacity: 1;
+	box-shadow: 0 0 4px limegreen inset,0 0 6px limegreen inset;
 }
 .labels {
 	background-color: silver;
-	width: -webkit-fill-available;
+	width: max-content;
 	padding: 1vh 1vw;
 	cursor: default;
 }
@@ -158,6 +158,9 @@ textarea {
 .dailyBlob,.dailyGrid,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	position: absolute;
 }
-.labels,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
+.bObj,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	transition: 1s all;
+}
+.blobHolder p {
+	transition: 200ms all;
 }

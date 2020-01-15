@@ -125,14 +125,23 @@ myUI = {
 
 			label.innerHTML = months[mnths]+" "+day[dy]+", "+yr+" at "+hr+":"+ min +":"+sec;
 			label.className = "labels";
-			label.style.opacity = 0;
-			label.style.transitionDelay = i+"00ms";
 
+			bObj.className = "bObj";
+			bObj.style.opacity = 0;
+			bObj.style.transitionDelay = i+"0ms";
 			bObj.append(label);
 
 			blobHolder.append(bObj);
+			
 		}
 		myUI.reverseList(blobHolder);
+
+		setTimeout(function(){
+			for (var k = 0; k < jData.journalEntries; k++) {
+				var bH = blobHolder.childNodes;
+				bH[k].style.opacity = 1;
+			} 
+		},666);
 	},
 	reverseList: function(blobHolder){
 		var blobC = blobHolder.childNodes;
@@ -141,15 +150,8 @@ myUI = {
 			for (var i = 0; i < blobC.length; i++){
 	        	var blobCC = blobC[i].childNodes;
 	        	for (var k = 0; k < blobCC.length; k++) {
-	        		blobCC[k].style.opacity = 1;
+					blobHolder.insertBefore(blobC[i], blobHolder.firstChild);
 	        	}
-	        	
-	        	
-	        	//blobCC[i].style.opacity = 1;
-				setTimeout(function(){
-			        blobHolder.insertBefore(blobC[i], blobHolder.firstChild);
-		    	},i + 1000);
-	        	
 	    	}
     	},200);
 	},
