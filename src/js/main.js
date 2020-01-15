@@ -128,6 +128,7 @@ myUI = {
 
 			bObj.className = "bObj";
 			bObj.style.opacity = 0;
+			bObj.onclick = myUI.getData(jData, bObj, i, label);
 			bObj.style.transitionDelay = i+"0ms";
 			bObj.append(label);
 
@@ -142,6 +143,24 @@ myUI = {
 				bH[k].style.opacity = 1;
 			} 
 		},666);
+	},
+	getData: function(jData, bObj, i, label){
+		return function(){
+			var pattern = "<div style='position:fixed;top:0;left:0;background:black;height:100%;width:100%;'><h3 style='text-align:center;margin:5px;background:silver;'>"+ label.innerHTML +"</h3>";
+				pattern += "<p style='padding:5px;background:silver;height:90%;margin:5px;'>"+ jData.journal[i].content+ "</p></div>";
+
+			var popup = window.open("","msg", "width=600,height=600", "_self");
+
+			if(popup.document.body.innerHTML != ""){
+				popup.close();
+				var popup = window.open("about:blank","msg", "width=600,height=600", "_self");
+
+				return popup.document.write(pattern);
+			} else {
+				return popup.document.write(pattern);
+			}
+
+		}
 	},
 	reverseList: function(blobHolder){
 		var blobC = blobHolder.childNodes;

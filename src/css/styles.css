@@ -115,8 +115,9 @@ button {
 textarea {
   	resize: none;
 }
-
-
+h2 {
+	background-color: pink;
+}
 /*CLASS*/
 .toolHolder {
 	background-color: rgba(10,10,10,0);
