@@ -1,9 +1,5 @@
 var myUI, jdata;
 
-var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-var day = ["0","1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th","13th","14th","15th","16th","17th","18th","19th","20th","21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"];
-
 jdata = {
 	timestamp: 0,
 	collections: {},
@@ -56,8 +52,6 @@ myUI = {
 
 			var toolHolder = createEle("div"),
 				homePage = createEle("div"),
-				ofs = createEle("button"),
-				cfs = createEle("button"),
 				dailyGrid = createEle("div"),
 				dailyBlob = createEle("div"),
 				blobHolder = createEle("div"),
@@ -68,17 +62,11 @@ myUI = {
 
 			toolHolder.className = "toolHolder";
 
-			ofs.innerHTML = "⬜";
-		    ofs.onclick = openFullscreen(ofs,cfs);
-		    ofs.disabled = false;
+			//toolHolder.append("tools");
 
-		    cfs.innerHTML = "◻️";
-		    cfs.onclick = closeFullScreen(cfs,ofs);
-		    cfs.disabled = true;
+			var fd = formatDateObject(d);
 
-			toolHolder.append(ofs,cfs);
-
-			txArea.placeholder = "Journal entry for " + days[wkDay] + ", " + months[mnths] + " " + day[dy] + ", " + yr;
+			txArea.placeholder = fd;
 			txArea.onkeyup = myUI.validateText(jData, txArea, jEntry);
 
 			jEntry.innerHTML = "SUBMIT";
@@ -109,21 +97,11 @@ myUI = {
 		for (var i = 0; i < jData.journalEntries; i++) {
 			var bObj = createEle("p"),
 				jDate = jData.journal[i].entryID,
-				date = new Date(jDate),
-				hr = date.getHours(),
-				min = date.getMinutes(),
-				sec = date.getSeconds(),
-			    wkDay = date.getDay(),
-				mnths = date.getMonth(),
-				dy = date.getDate(),
-				yr = date.getFullYear(),
 				label = createEle("div");
 
-			if (hr   < 10) {hr   = "0"+hr;}
-    		if (min < 10) {min = "0"+min;}
-    		if (sec < 10) {sec = "0"+sec;}
+		var fd = formatDateObject(jDate);
 
-			label.innerHTML = months[mnths]+" "+day[dy]+", "+yr+" at "+hr+":"+ min +":"+sec;
+			label.innerHTML = fd;
 			label.className = "labels";
 
 			bObj.className = "bObj";
@@ -133,7 +111,6 @@ myUI = {
 			bObj.append(label);
 
 			blobHolder.append(bObj);
-			
 		}
 		myUI.reverseList(blobHolder);
 
@@ -153,7 +130,7 @@ myUI = {
 
 			if(popup.document.body.innerHTML != ""){
 				popup.close();
-				var popup = window.open("about:blank","msg", "width=600,height=600", "_self");
+				var popup = window.open("","msg", "width=600,height=600", "_self");
 
 				return popup.document.write(pattern);
 			} else {

@@ -115,9 +115,7 @@ button {
 textarea {
   	resize: none;
 }
-h2 {
-	background-color: pink;
-}
+
 /*CLASS*/
 .toolHolder {
 	background-color: rgba(10,10,10,0);
@@ -202,11 +200,11 @@ h2 {
 	text-align: left;
 }
 .blobHolder p:hover {
-	box-shadow: 0 0 4px limegreen inset,0 0 6px limegreen inset;
+	box-shadow: 0 0 5px limegreen inset,0 0 5px limegreen inset,0 0 5px limegreen inset,0 0 15px limegreen inset,0 0 15px limegreen inset;
 }
 .labels {
 	background-color: silver;
-	width: max-content;
+	width: -webkit-fill-available;
 	padding: 1vh 1vw;
 	cursor: default;
 }
