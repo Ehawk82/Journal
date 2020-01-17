@@ -1,4 +1,17 @@
-var myUI, jdata;
+var myUI, jdata, taskArr;
+
+taskArr = [
+	"Make your bed",
+	"Brush your teeth",
+	"Feed an animal or plant",
+	"Meditation",
+	"",
+	"",
+	"",
+	"",
+	"",
+	""
+];
 
 jdata = {
 	timestamp: 0,
@@ -54,7 +67,9 @@ myUI = {
 				homePage = createEle("div"),
 				dailyGrid = createEle("div"),
 				dailyBlob = createEle("div"),
+				dailyList = createEle("div"),
 				blobHolder = createEle("div"),
+				listHolder = createEle("div"),
 				txArea = createEle("textarea"),
 				jEntry = createEle("button");
 
@@ -76,14 +91,20 @@ myUI = {
 			blobHolder.className = "blobHolder";
 			blobHolder.onload = myUI.updateBlob(jData,blobHolder,d);
 
+			listHolder.className = "listHolder";
+			listHolder.onload = myUI.updateList(jData,listHolder,d);
+
 			dailyGrid.className = "dailyGrid";
 			dailyGrid.append(txArea,jEntry);
 
 			dailyBlob.className = "dailyBlob";
 			dailyBlob.append(blobHolder);
 
+			dailyList.className = "dailyList";
+			dailyList.append(listHolder);
+
 			homePage.className = "homePage";
-			homePage.append(dailyGrid,dailyBlob);
+			homePage.append(dailyGrid,dailyBlob,dailyList);
 
 			body.append(toolHolder,homePage);
 
@@ -92,6 +113,21 @@ myUI = {
 				makeFull(homePage);
 			},100);
 		}
+	},
+	updateList: function(jData,listHolder,d){
+		var listSection = createEle("div");
+
+		listSection.className = "listSection";
+
+		for (var i = 0; i < jData.steps; i++) {
+			var task = createEle("p");
+
+			task.innerHTML = "item_" + i;
+			task.className = "tasks";
+			listSection.append(task);
+		}
+
+		listHolder.append(listSection);
 	},
 	updateBlob: function(jData,blobHolder,d){
 		for (var i = 0; i < jData.journalEntries; i++) {
