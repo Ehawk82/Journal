@@ -124,17 +124,22 @@ myUI = {
 	getData: function(jData, bObj, i, label){
 		return function(){
 			var pattern = "<div style='position:fixed;top:0;left:0;background:black;height:100%;width:100%;'><h3 style='text-align:center;margin:5px;background:silver;'>"+ label.innerHTML +"</h3>";
-				pattern += "<p style='padding:5px;background:silver;height:90%;margin:5px;'>"+ jData.journal[i].content+ "</p></div>";
+				pattern += "<p style='padding:5px 50px;background:silver;height:90%;margin:5px;'>"+ jData.journal[i].content+ "</p></div>";
 
-			var popup = window.open("","msg", "width=600,height=600", "_self");
+			var popup = window.open("","msg", "width=600,height=800", "_self");
 
 			if(popup.document.body.innerHTML != ""){
+				popup.onbeforeunload = function(e){
+				e.preventDefault();
+
 				popup.close();
-				var popup = window.open("","msg", "width=600,height=600", "_self");
+			}
+				var popup = window.open("","msg", "width=600,height=800", "_self");
 
 				return popup.document.write(pattern);
 			} else {
-				return popup.document.write(pattern);
+				return popup.document.write(pattern),
+					   popup.onblur = popup.close;
 			}
 
 		}
@@ -169,11 +174,14 @@ myUI = {
 				tx = txArea.value.trim(),
 				je = jData.journalEntries + 1,
 				jd = JSON.stringify(jData),
-				ts = d.getTime(),
-				arr = [ 
+				ts = d.getTime();
+				var tX = tx.replace(/[\n\r]/g, "<br/>");
+
+
+				var arr = [ 
 					je = {
 						"entryID": ts,
-						"content": tx
+						"content": tX
 					}
 				];
 			Array.prototype.push.apply(jj, arr);

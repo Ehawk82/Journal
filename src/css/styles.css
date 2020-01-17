@@ -114,6 +114,7 @@ button {
 }
 textarea {
   	resize: none;
+  	outline-style: none;
 }
 
 /*CLASS*/
@@ -121,12 +122,10 @@ textarea {
 	background-color: rgba(10,10,10,0);
 	top:-100px;
 	height: 5vh;
-
 }
 .toolHolder_full {
 	top:0;
 	height: 5vh;
-
 }
 .toolHolder_full button {
 	margin-right: .5vw; 
