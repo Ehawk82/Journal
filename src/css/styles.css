@@ -15,7 +15,7 @@
 	.dailyList {
 		width: 100vw;
 		position: relative;
-		margin:1vh auto;
+		margin:1vh 0;
 	}
 	.dailyBlob {
 		width: 100vw;
@@ -252,7 +252,8 @@ textarea {
 }
 .dailyList {
 	height:46vh;
-	overflow: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 .activeTools {
 	line-height:17vh;
@@ -327,6 +328,8 @@ textarea {
 	float: right;
 	line-height: 3vh;
 	width: 5vw;
+	margin-right: 10px;
+	text-align:left;
 }
 /*ID*/
 

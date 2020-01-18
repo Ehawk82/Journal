@@ -11,11 +11,35 @@ taskArr = [
 	"Drink some water",
 	"Be productive",
 	"Laugh",
-	"Interact with another human",
+	"Interact with another human",/*10*/
 	"Go outside",
-	"Clean your personal space"
+	"Clean your personal space",
+	"Schedule/Review appointments",
+	"Make a journal entry",
+	"Take a moment to observe existence",
+	"Read a book or article",
+	"Talk to a friend",
+	"Make important phone calls",
+	"Watch/Read the weather",
+	"Do a wellness scan",/*20*/
+	"Commit to spiritual activity",
+	"Take medicine(if any)",
+	"Find pleasure",
+	"Ask someone about their day",
+	"Prepare for tommorow",
+	"Talk to a family member",
+	"Play a game or puzzle",
+	"Stargaze/Watch sunset",
+	"Study a topic of your choice"
 ];
-
+/*
+Environmental*****
+Emotional*****
+Physical*****
+Social*****
+Intellectual*****
+Spiritual*****
+*/
 jdata = {
 	timestamp: 0,
 	collections: {},
@@ -26,19 +50,36 @@ jdata = {
 	dateGrid: {},
 	steps: 10,
 	stepGrid: {
-		0: {0: taskArr[0],1: false,2: 10},
-		1: {0: taskArr[1],1: false,2: 20},
-		2: {0: taskArr[2],1: false,2: 20},
-		3: {0: taskArr[3],1: false,2: 10},
-		4: {0: taskArr[4],1: false,2: 10},
-		5: {0: taskArr[5],1: false,2: 20},
-		6: {0: taskArr[6],1: false,2: 10},
-		7: {0: taskArr[7],1: false,2: 40},
-		8: {0: taskArr[8],1: false,2: 10},
-		9: {0: taskArr[9],1: false,2: 20},
-		10: {0: taskArr[10],1: false,2: 10},
-		11: {0: taskArr[11],1: false,2: 10},
-		12: {0: taskArr[12],1: false,2: 10}
+		0: {0: taskArr[0],1: false,2: 17,3:"Environmental"},
+		1: {0: taskArr[1],1: false,2: 17,3:"Physical"},
+		2: {0: taskArr[2],1: false,2: 40,3:"Environmental"},
+		3: {0: taskArr[3],1: false,2: 17,3:"Spiritual"},
+		4: {0: taskArr[4],1: false,2: 25,3:"Physical"},
+		5: {0: taskArr[5],1: false,2: 40,3:"Physical"},
+		6: {0: taskArr[6],1: false,2: 17,3:"Emotional"},
+		7: {0: taskArr[7],1: false,2: 50,3:"Physical"},
+		8: {0: taskArr[8],1: false,2: 17,3:"Intellectual"},
+		9: {0: taskArr[9],1: false,2: 40,3:"Emotional"},
+		10: {0: taskArr[10],1: false,2: 25,3:"Social"},
+		11: {0: taskArr[11],1: false,2: 35,3:"Environmental"},
+		12: {0: taskArr[12],1: false,2: 25,3:"Environmental"},
+		13: {0: taskArr[13],1: false,2: 35,3:"Emotional"},
+		14: {0: taskArr[14],1: false,2: 25,3:"Emotional"},
+		15: {0: taskArr[15],1: false,2: 25,3:"Spiritual"},
+		16: {0: taskArr[16],1: false,2: 25,3:"Intellectual"},
+		17: {0: taskArr[17],1: false,2: 35,3:"Social"},
+		18: {0: taskArr[18],1: false,2: 15,3:"Social"},
+		19: {0: taskArr[19],1: false,2: 50,3:"Environmental"},
+		20: {0: taskArr[20],1: false,2: 50,3:"Emotional"},
+		21: {0: taskArr[21],1: false,2: 35,3:"Spiritual"},
+		22: {0: taskArr[22],1: false,2: 35,3:"Physical"},
+		23: {0: taskArr[23],1: false,2: 40,3:"Spiritual"},
+		24: {0: taskArr[24],1: false,2: 50,3:"Social"},
+		25: {0: taskArr[25],1: false,2: 35,3:"Intellectual"},
+		26: {0: taskArr[26],1: false,2: 40,3:"Social"},
+		27: {0: taskArr[27],1: false,2: 40,3:"Intellectual"},
+		28: {0: taskArr[28],1: false,2: 50,3:"Spiritual"},
+		29: {0: taskArr[29],1: false,2: 50,3:"Intellectual"}
 	},
 	dailyRegister: 0,
 	mood: 5,
@@ -118,7 +159,7 @@ myUI = {
 			blobHolder.onload = myUI.updateBlob(jData,blobHolder,d);
 
 			listHolder.className = "listHolder";
-			listHolder.onload = myUI.updateList(jData,listHolder,d,toolHolder);
+			listHolder.onload = myUI.updateList(jData,listHolder,toolHolder);
 
 			var aTH = createEle("div"),
 				activeTools = createEle("div");
@@ -165,7 +206,8 @@ myUI = {
 
 		aTH.append(archive,toolPref,goalAsset);
 	},
-	updateList: function(jData,listHolder,d,toolHolder){
+	updateList: function(jData,listHolder,toolHolder){
+		var d = new Date();
 		var listSection = createEle("div"),
 		    dayMark = d.getDate();
 		if (jData.dailyRegister != dayMark){
@@ -183,13 +225,14 @@ myUI = {
 
 			task.innerHTML = taskArr[i];
 			task.className = "tasks";
+			task.setAttribute("data-index", i);
 
 			if(jData.stepGrid[i][1] === false ){
 				task.style.background = "darkgrey";
 				task.onclick = myUI.listSelection(jData,task,i,toolHolder);
 			} else {
 				task.style.background = "lightgrey";
-				task.innerHTML += "<span class='taskMark'>✔️</span>";
+				task.innerHTML += "<span class='taskMark' data-index='"+ i +"' onclick='myUI.removeCheck(this)'>✔️</span>";
 				task.onclick = null;
 			}
 
@@ -200,6 +243,24 @@ myUI = {
 
 		saveLS("jData", jData);
 	},
+	removeCheck: function(x){
+		var jData = parseLS("jData"),
+			listHolder = bySel(".listHolder"),
+			toolHolder = bySel(".toolHolder_full");
+		
+		var i = x.getAttribute("data-index");
+		jData.stepGrid[i][1] = false;
+		jData.score = jData.score - jData.stepGrid[i][2];
+
+		saveLS("jData",jData);
+		listHolder.innerHTML = "";
+		toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
+		setTimeout(function(){
+			myUI.updateList(jData,listHolder,toolHolder);
+		},2);
+		//return myUI.updateList(jData,listHolder,toolHolder);
+		
+	},
 	listSelection: function(jData,task,i,toolHolder){
 		return function(){
 			var t= jData.stepGrid[i],
@@ -208,14 +269,15 @@ myUI = {
 
 			task.style.background = "lightgrey";
 			task.onclick = null;
-			task.innerHTML += "<span class='taskMark'>✔️</span>";
+			task.innerHTML += "<span class='taskMark' data-index='"+ i +"' onclick='myUI.removeCheck(this)'>✔️</span>";
 
 			jData.score = jData.score + jData.stepGrid[i][2];
 			jData.stepGrid[i][1] = true;
-
+var toolHolder = bySel(".toolHolder_full");
 			toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
-
-			saveLS("jData", jData);
+			setTimeout(function(){
+				saveLS("jData", jData);
+			},2);
 		}
 	},
 	updateBlob: function(jData,blobHolder){
