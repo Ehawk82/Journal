@@ -139,7 +139,7 @@ myUI = {
 			activeTools.append(aTH);
 
 			homePage.className = "homePage";
-			homePage.append(dailyGrid,dailyBlob,dailyList,activeTools);
+			homePage.append(activeTools,dailyGrid,dailyBlob,dailyList,);
 
 			body.append(toolHolder,homePage);
 
@@ -189,6 +189,7 @@ myUI = {
 				task.onclick = myUI.listSelection(jData,task,i,toolHolder);
 			} else {
 				task.style.background = "lightgrey";
+				task.innerHTML += "<span class='taskMark'>✔️</span>";
 				task.onclick = null;
 			}
 
@@ -207,6 +208,7 @@ myUI = {
 
 			task.style.background = "lightgrey";
 			task.onclick = null;
+			task.innerHTML += "<span class='taskMark'>✔️</span>";
 
 			jData.score = jData.score + jData.stepGrid[i][2];
 			jData.stepGrid[i][1] = true;

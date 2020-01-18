@@ -213,14 +213,13 @@ textarea {
 .toolHolder {
 	background-color: rgba(10,10,10,0);
 	top:-100px;
-	height: 5vh;
+	line-height: 5vh;
 }
 .toolHolder_full {
 	top:0;
-	height: 5vh;
+	line-height: 5vh;
 }
 .toolHolder_full button {
-	margin-right: .5vw; 
 	opacity: 1;
 	height: -webkit-fill-available;
 }
@@ -294,7 +293,7 @@ textarea {
 }
 .blobHolder p {
 	box-shadow: 0 0 2px white inset,0 0 3px white inset,0 0 4px white inset,0 0 5px white inset;
-	margin:1vh 0;
+	margin:0 0 .2vh 0;
 	padding: 1.3vh 1.3vw;
 	text-align: left;
 }
@@ -314,12 +313,20 @@ textarea {
 	}
 .listSection p {
 	cursor:pointer;
+	line-height: 3vh;
 	padding: 5px 0;
 	margin: 5px;
+	text-align: left;
+	text-indent: 2vw;
 }
 .aTButtons {
-	margin: auto 4vw;
+	margin: auto 3vw;
 	display: inline-block;
+}
+.taskMark {
+	float: right;
+	line-height: 3vh;
+	width: 5vw;
 }
 /*ID*/
 
@@ -336,13 +343,11 @@ textarea {
 	box-shadow: 0 0 1px silver inset,0 0 2px silver inset;
 
 }
-.toolHolder_full,.toolHolder {
-	text-align: right;
-}
+
 .toolHolder_full,.toolHolder,.homePage_full,.homePage {
 	width:100vw;
 }
-.startMenu, .startMenu_full,.homePage_full,.homePage {
+.toolHolder_full,.toolHolder,.startMenu, .startMenu_full,.homePage_full,.homePage {
 	text-align: center;
 }
 .startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
