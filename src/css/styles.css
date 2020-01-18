@@ -1,68 +1,94 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+	.activeTools {
+		width: 100vw;
+		position: relative;
+		margin:1vh auto;
+	}
 	.listSection {
+		overflow-y: scroll;
 		height: 90vh;
+		position: relative;
 		width: 90vw;
+		margin:1vh auto;
 	}
 	.dailyList {
-		width: 90vw;
+		width: 100vw;
 		position: relative;
 		margin:1vh auto;
 	}
 	.dailyBlob {
-		width: 90vw;
+		width: 100vw;
 		margin:1vh auto;
 		position: relative;
 	}
 	.dailyGrid {
-		width: 90vw;
+		width: 100vw;
 		position: relative;
 		margin:1vh auto;
 	}
 	.homePage_full {
 		overflow-y: scroll;
+		overflow-x: hidden;
 
 	}
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+	.activeTools {
+		width: 100vw;
+		position: relative;
+		margin:1vh auto;
+	}
 	.listSection {
+		overflow-y: scroll;
 		height: 90vh;
+		position: relative;
 		width: 90vw;
+		margin:1vh auto;
 	}
 	.dailyList {
-		width: 90vw;
+		width: 100vw;
 		position: relative;
 		margin:1vh auto;
 	}
 	.dailyBlob {
-		width: 90vw;
+		width: 100vw;
 		position: relative;
 		margin:1vh auto;
 	}
 	.dailyGrid {
-		width: 90vw;
+		width: 100vw;
 		position: relative;
 		margin:1vh auto;
 	}
 	.homePage_full {
 		overflow-y: scroll;
+		overflow-x: hidden;
+
 	}
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+	.activeTools {
+		width: 48vw;
+		position: absolute;
+		top:74vh;
+		right: 0;
+	}
 	.listSection {
-		height: 43vh;
-		width: 43vw;
+		overflow-y: scroll;
+		height: 44vh;
+		width: 44vw;
 		margin:1vh 1vw;
 	}
 	.dailyList {
-		width: 45vw;
+		width: 47vw;
 		position: absolute;
 		top:45vh;
-		left: 3vw;
+		left: 2vw;
 	}
 	.dailyBlob {
 		width: 48vw;
@@ -80,16 +106,23 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+	.activeTools {
+		width: 46vw;
+		position: absolute;
+		top:74vh;
+		right: 2vw;
+	}
 	.listSection {
-		height: 43vh;
-		width: 43vw;
+		overflow-y: scroll;
+		height: 44vh;
+		width: 44vw;
 		margin:1vh 1vw;
 	}
 	.dailyList {
-		width: 45vw;
+		width: 46vw;
 		position: absolute;
 		top:45vh;
-		left: 3vw;
+		left: 2vw;
 	}
 	.dailyBlob {
 		width: 46vw;
@@ -107,9 +140,16 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+	.activeTools {
+		width: 45vw;
+		position: absolute;
+		top:74vh;
+		right: 3vw;
+	}
 	.listSection {
-		height: 43vh;
-		width: 43vw;
+		overflow-y: scroll;
+		height: 44vh;
+		width: 44vw;
 		margin:1vh 1vw;
 	} 
 	.dailyList {
@@ -154,7 +194,8 @@ body {
 }
  
 ::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: slategrey;
+  box-shadow: 0 0 1px black inset;
   outline: 1px solid slategrey;
 
 }
@@ -214,8 +255,12 @@ textarea {
 	height:46vh;
 	overflow: hidden;
 }
+.activeTools {
+	line-height:17vh;
+	overflow: hidden;
+}
 .dailyBlob {
-	height:90vh;
+	height:70vh;
 	overflow: hidden;
 }
 .dailyGrid {
@@ -248,29 +293,39 @@ textarea {
 	overflow-x: hidden;
 }
 .blobHolder p {
-	box-shadow: 0 0 2px black inset;
-	margin:1vh 1vw;
+	box-shadow: 0 0 2px white inset,0 0 3px white inset,0 0 4px white inset,0 0 5px white inset;
+	margin:1vh 0;
 	padding: 1.3vh 1.3vw;
 	text-align: left;
 }
 .blobHolder p:hover {
-	box-shadow: 0 0 5px limegreen inset,0 0 5px limegreen inset,0 0 5px limegreen inset,0 0 15px limegreen inset,0 0 15px limegreen inset;
+	box-shadow: 0 0 2px black inset,0 0 3px black inset,0 0 4px limegreen inset,0 0 8px limegreen inset,0 0 16px limegreen inset;
 }
 .labels {
 	background-color: silver;
 	width: -webkit-fill-available;
 	padding: 1vh 1vw;
-	cursor: default;
+	cursor: pointer;
 }
 .listSection {
 		background-color: white;
 		color: black;
-	} 
+		overflow-y: scroll;
+	}
+.listSection p {
+	cursor:pointer;
+	padding: 5px 0;
+	margin: 5px;
+}
+.aTButtons {
+	margin: auto 4vw;
+	display: inline-block;
+}
 /*ID*/
 
 /*MULTIS*/
-.dailyBlob,.dailyGrid,.dailyList {
-	background-color: silver;
+.dailyBlob,.dailyGrid,.dailyList,.activeTools {
+	background-color: darkgrey;
 }
 .toolHolder_full,.homePage_full {
 	background-color: rgba(10,10,10,1);
@@ -295,7 +350,7 @@ textarea {
 }
 
 .bObj,.startMenu, .startMenu_full,.toolHolder_full,.toolHolder,.homePage_full,.homePage {
-	transition: 1s all;
+	transition: 666ms all;
 }
 .blobHolder p {
 	transition: 200ms all;

@@ -4,13 +4,16 @@ taskArr = [
 	"Make your bed",
 	"Brush your teeth",
 	"Feed an animal or plant",
-	"Meditation",
-	"",
-	"",
-	"",
-	"",
-	"",
-	""
+	"Meditate",
+	"Eat a balanced meal",
+	"Exercise",
+	"Listen to some Music",
+	"Drink some water",
+	"Be productive",
+	"Laugh",
+	"Interact with another human",
+	"Go outside",
+	"Clean your personal space"
 ];
 
 jdata = {
@@ -22,6 +25,22 @@ jdata = {
 	journalEntries: 0,
 	dateGrid: {},
 	steps: 10,
+	stepGrid: {
+		0: {0: taskArr[0],1: false,2: 10},
+		1: {0: taskArr[1],1: false,2: 20},
+		2: {0: taskArr[2],1: false,2: 20},
+		3: {0: taskArr[3],1: false,2: 10},
+		4: {0: taskArr[4],1: false,2: 10},
+		5: {0: taskArr[5],1: false,2: 20},
+		6: {0: taskArr[6],1: false,2: 10},
+		7: {0: taskArr[7],1: false,2: 40},
+		8: {0: taskArr[8],1: false,2: 10},
+		9: {0: taskArr[9],1: false,2: 20},
+		10: {0: taskArr[10],1: false,2: 10},
+		11: {0: taskArr[11],1: false,2: 10},
+		12: {0: taskArr[12],1: false,2: 10}
+	},
+	dailyRegister: 0,
 	mood: 5,
 	goals: {},
 	risks: {},
@@ -74,10 +93,17 @@ myUI = {
 				jEntry = createEle("button");
 
 			startMenu.remove();
+			var dayMark = d.getDate();
+
+			if (jData.dailyRegister != dayMark){
+				jData.score = 0;
+			}
 
 			toolHolder.className = "toolHolder";
 
-			//toolHolder.append("tools");
+			var scr = "DAILY SCORE: " + jData.score;
+
+			toolHolder.append(scr);
 
 			var fd = formatDateObject(d);
 
@@ -92,7 +118,13 @@ myUI = {
 			blobHolder.onload = myUI.updateBlob(jData,blobHolder,d);
 
 			listHolder.className = "listHolder";
-			listHolder.onload = myUI.updateList(jData,listHolder,d);
+			listHolder.onload = myUI.updateList(jData,listHolder,d,toolHolder);
+
+			var aTH = createEle("div"),
+				activeTools = createEle("div");
+
+			aTH.className = "aTH";
+			aTH.onload = myUI.updateATH(jData,aTH,d,toolHolder);
 
 			dailyGrid.className = "dailyGrid";
 			dailyGrid.append(txArea,jEntry);
@@ -103,8 +135,11 @@ myUI = {
 			dailyList.className = "dailyList";
 			dailyList.append(listHolder);
 
+			activeTools.className = "activeTools";
+			activeTools.append(aTH);
+
 			homePage.className = "homePage";
-			homePage.append(dailyGrid,dailyBlob,dailyList);
+			homePage.append(dailyGrid,dailyBlob,dailyList,activeTools);
 
 			body.append(toolHolder,homePage);
 
@@ -114,22 +149,77 @@ myUI = {
 			},100);
 		}
 	},
-	updateList: function(jData,listHolder,d){
-		var listSection = createEle("div");
+	updateATH: function(jData,aTH,d,toolHolder){
+		var archive = createEle("button"),
+			toolPref = createEle("button"),
+			goalAsset = createEle("button");
+
+		archive.innerHTML = "📔";
+		archive.className = "aTButtons";
+
+		toolPref.innerHTML = "⚙️";
+		toolPref.className = "aTButtons";
+
+		goalAsset.innerHTML = "⭐";
+		goalAsset.className = "aTButtons";
+
+		aTH.append(archive,toolPref,goalAsset);
+	},
+	updateList: function(jData,listHolder,d,toolHolder){
+		var listSection = createEle("div"),
+		    dayMark = d.getDate();
+		if (jData.dailyRegister != dayMark){
+			for (var t = 0; t < taskArr.length; t++) {
+				jData.stepGrid[t][1] = false;
+			}
+		}
+
+		jData.dailyRegister = dayMark;
 
 		listSection.className = "listSection";
 
-		for (var i = 0; i < jData.steps; i++) {
+		for (var i = 0; i < taskArr.length; i++) {
 			var task = createEle("p");
 
-			task.innerHTML = "item_" + i;
+			task.innerHTML = taskArr[i];
 			task.className = "tasks";
+
+			if(jData.stepGrid[i][1] === false ){
+				task.style.background = "darkgrey";
+				task.onclick = myUI.listSelection(jData,task,i,toolHolder);
+			} else {
+				task.style.background = "lightgrey";
+				task.onclick = null;
+			}
+
 			listSection.append(task);
 		}
 
 		listHolder.append(listSection);
+
+		saveLS("jData", jData);
 	},
-	updateBlob: function(jData,blobHolder,d){
+	listSelection: function(jData,task,i,toolHolder){
+		return function(){
+			var t= jData.stepGrid[i],
+				tsk = t[0],
+				tskBool = t[1];
+
+			task.style.background = "lightgrey";
+			task.onclick = null;
+
+			jData.score = jData.score + jData.stepGrid[i][2];
+			jData.stepGrid[i][1] = true;
+
+			toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
+
+			saveLS("jData", jData);
+		}
+	},
+	updateBlob: function(jData,blobHolder){
+		if(jData.journalEntries === 0){
+			blobHolder.append("There are no entries. Use the text area to log an entry");
+		}
 		for (var i = 0; i < jData.journalEntries; i++) {
 			var bObj = createEle("p"),
 				jDate = jData.journal[i].entryID,
@@ -142,7 +232,7 @@ myUI = {
 
 			bObj.className = "bObj";
 			bObj.style.opacity = 0;
-			bObj.onclick = myUI.getData(jData, bObj, i, label);
+			bObj.onclick = myUI.getData(jData, bObj, i, label,fd);
 			bObj.style.transitionDelay = i+"0ms";
 			bObj.append(label);
 
@@ -157,27 +247,37 @@ myUI = {
 			} 
 		},666);
 	},
-	getData: function(jData, bObj, i, label){
+	getData: function(jData, bObj, i, label,fd){
 		return function(){
+			var lnth = myHeight() - 80,
+				wdth = myWidth() - 20;
+
 			var pattern = "<div style='position:fixed;top:0;left:0;background:black;height:100%;width:100%;'><h3 style='text-align:center;margin:5px;background:silver;'>"+ label.innerHTML +"</h3>";
 				pattern += "<p style='padding:5px 50px;background:silver;height:90%;margin:5px;'>"+ jData.journal[i].content+ "</p></div>";
 
-			var popup = window.open("","msg", "width=600,height=800", "_self");
+			var popup = window.open("","msg", "width="+wdth+",height="+lnth+"", "_top");
+			var alrt = "Preparing to close window for entry date: " + fd + ", if you haven't printed, now is you're chance to do so";
 
 			if(popup.document.body.innerHTML != ""){
 				popup.onbeforeunload = function(e){
 				e.preventDefault();
 
-				popup.close();
+				popup.close;
 			}
-				var popup = window.open("","msg", "width=600,height=800", "_self");
+				var popup = window.open("","msg", "width=600,height=800", "_top");
 
-				return popup.document.write(pattern);
+				return popup.document.write(pattern),
+					   popup.onblur = function(){
+						alert(alrt);
+					   		popup.close();
+					   };
 			} else {
 				return popup.document.write(pattern),
-					   popup.onblur = popup.close;
+						popup.onblur = function(){
+						alert(alrt);
+					   		popup.close();
+					   };
 			}
-
 		}
 	},
 	reverseList: function(blobHolder){
@@ -190,7 +290,7 @@ myUI = {
 					blobHolder.insertBefore(blobC[i], blobHolder.firstChild);
 	        	}
 	    	}
-    	},200);
+    	}, 200);
 	},
 	validateText: function(jData, txArea, jEntry){
 		return function() {
@@ -212,7 +312,6 @@ myUI = {
 				jd = JSON.stringify(jData),
 				ts = d.getTime();
 				var tX = tx.replace(/[\n\r]/g, "<br/>");
-
 
 				var arr = [ 
 					je = {
