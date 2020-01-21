@@ -247,8 +247,8 @@ textarea {
 	top:10vh;
 	left:25vw;
 	width:50vw;
-	line-height: 80vh;
-	opacity: 1;
+	line-height:80vh;
+	opacity:1;
 }
 .dailyList {
 	height:46vh;
@@ -330,6 +330,32 @@ textarea {
 	width: 5vw;
 	margin-right: 10px;
 	text-align:left;
+}
+.blokker {
+	position: fixed;
+	display: block;
+	top:0;
+	left: 0;
+	height: 100vh;
+	width:100vw;
+	background-color: black;
+	opacity: 0.8;
+	z-index: 20;
+}
+.xOut {
+	position: fixed;
+	top:0;
+	left: 0;
+	height: 5vh;
+	width:5vw;
+	background-color: rgba(0,0,0,0);
+	color:red;
+	font-size: 2.5vw;
+	font-weight: bolder;
+	opacity: 1;
+	z-index: 21;
+	border:none;
+	outline-style: none;
 }
 /*ID*/
 

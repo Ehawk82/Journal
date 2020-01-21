@@ -197,14 +197,36 @@ myUI = {
 
 		archive.innerHTML = "📔";
 		archive.className = "aTButtons";
+		archive.setAttribute("data-index",1);
+		archive.onclick = myUI.runATH(jData,aTH,d,toolHolder,archive);
 
 		toolPref.innerHTML = "⚙️";
 		toolPref.className = "aTButtons";
+		toolPref.setAttribute("data-index",2);
+		toolPref.onclick = myUI.runATH(jData,aTH,d,toolHolder,toolPref);
 
 		goalAsset.innerHTML = "⭐";
 		goalAsset.className = "aTButtons";
+		goalAsset.setAttribute("data-index",3);
+		goalAsset.onclick = myUI.runATH(jData,aTH,d,toolHolder,goalAsset);
 
 		aTH.append(archive,toolPref,goalAsset);
+	},
+	runATH: function(jData,aTH,d,toolHolder,x){
+		return function(){
+			var y = x.getAttribute("data-index"),
+				blokker = createEle("div"),
+				xOut = createEle("button");
+
+			blokker.className = "blokker";
+			blokker.append(xOut);
+
+			xOut.innerHTML = "X";
+			xOut.className = "xOut";
+			xOut.onclick = function(){ return blokker.remove(); };
+
+			body.append(blokker);
+		}
 	},
 	updateList: function(jData,listHolder,toolHolder){
 		var d = new Date();
@@ -259,7 +281,6 @@ myUI = {
 			myUI.updateList(jData,listHolder,toolHolder);
 		},2);
 		//return myUI.updateList(jData,listHolder,toolHolder);
-		
 	},
 	listSelection: function(jData,task,i,toolHolder){
 		return function(){
@@ -273,7 +294,7 @@ myUI = {
 
 			jData.score = jData.score + jData.stepGrid[i][2];
 			jData.stepGrid[i][1] = true;
-var toolHolder = bySel(".toolHolder_full");
+			var toolHolder = bySel(".toolHolder_full");
 			toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
 			setTimeout(function(){
 				saveLS("jData", jData);
