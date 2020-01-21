@@ -268,19 +268,22 @@ myUI = {
 	removeCheck: function(x){
 		var jData = parseLS("jData"),
 			listHolder = bySel(".listHolder"),
+			task = x.parentNode;
 			toolHolder = bySel(".toolHolder_full");
 		
 		var i = x.getAttribute("data-index");
+
 		jData.stepGrid[i][1] = false;
 		jData.score = jData.score - jData.stepGrid[i][2];
 
+		x.remove();
+		task.style.background = "darkgrey";
+
 		saveLS("jData",jData);
-		listHolder.innerHTML = "";
 		toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
 		setTimeout(function(){
-			myUI.updateList(jData,listHolder,toolHolder);
+			task.onclick = myUI.listSelection(jData,task,i,toolHolder);
 		},2);
-		//return myUI.updateList(jData,listHolder,toolHolder);
 	},
 	listSelection: function(jData,task,i,toolHolder){
 		return function(){
