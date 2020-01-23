@@ -208,7 +208,10 @@ textarea {
   	resize: none;
   	outline-style: none;
 }
-
+h4 {
+	text-align: center;
+	width: 100vw;
+}
 /*CLASS*/
 .toolHolder {
 	background-color: rgba(10,10,10,0);

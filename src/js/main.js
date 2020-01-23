@@ -216,10 +216,14 @@ myUI = {
 		return function(){
 			var y = x.getAttribute("data-index"),
 				blokker = createEle("div"),
-				xOut = createEle("button");
+				xOut = createEle("button"),
+				pageData = createEle("div");
+
+			pageData.className = "pageData";
+			pageData.onload = myUI.evalATH(jData,aTH,d,toolHolder,x,y,blokker);
 
 			blokker.className = "blokker";
-			blokker.append(xOut);
+			blokker.append(xOut,pageData);
 
 			xOut.innerHTML = "X";
 			xOut.className = "xOut";
@@ -227,6 +231,40 @@ myUI = {
 
 			body.append(blokker);
 		}
+	},
+	evalATH: function(jData,aTH,d,toolHolder,x,y,blokker){
+		var header = createEle("h4"), ex, goto;
+
+		if(y === "1"){
+			ex = "Archive";
+			goto = myUI.gotoArchive(jData,aTH,d,toolHolder,x,y,blokker);
+		}
+		if(y === "2"){
+			ex = "Settings";
+			goto = myUI.gotoSettings(jData,aTH,d,toolHolder,x,y,blokker);
+
+		}
+		if(y === "3"){
+			ex = "Goals";
+			goto = myUI.gotoGoals(jData,aTH,d,toolHolder,x,y,blokker);
+		}
+
+		header.innerHTML = ex;
+		header.onload = goto;
+		
+		blokker.append(header);
+	},
+	gotoArchive:function(){
+//
+console.log("archive");
+	},
+	gotoSettings:function(){
+//
+console.log("Settings");
+	},
+	gotoGoals:function(){
+//
+console.log("Goals");
 	},
 	updateList: function(jData,listHolder,toolHolder){
 		var d = new Date();
