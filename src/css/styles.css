@@ -342,8 +342,33 @@ h4 {
 	height: 100vh;
 	width:100vw;
 	background-color: black;
-	opacity: 0.8;
+	opacity: 1;
 	z-index: 20;
+}
+.aHolder,.sHolder,.gHolder{
+	background-color: white;
+	position: absolute;
+	left:10vw;
+	top:5vh;
+	width:80vw;
+	height: 90vh;
+}
+.buttonHolder {
+	width: -webkit-fill-available;
+	height: -webkit-fill-available;
+	margin:1vh 1vw;
+	text-align: center;
+}
+
+.warnPage {
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	background-color: black;
+	text-align: center;
+	z-index: 21;
 }
 .xOut {
 	position: fixed;
@@ -359,6 +384,35 @@ h4 {
 	z-index: 21;
 	border:none;
 	outline-style: none;
+}
+.theArchive {
+	box-shadow: 0 0 1px black,0 0 1px black;
+	width: -webkit-fill-available;
+	height: -webkit-fill-available;
+	margin:.5vh .5vw;
+	border-radius: 1px;
+}
+
+.space {
+	height: 100%;
+	width: 100%;
+	background-position:0 auto;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-image:url("../assets/space.jpg");
+	text-align: center;
+}
+.hole {
+	display: inline-block;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    margin: 25% auto;
+    background-color: black;
+    box-shadow: 0 0 2px yellow, 0 0 20px white;
+	animation-name: spin;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
 }
 /*ID*/
 
@@ -391,4 +445,23 @@ h4 {
 }
 .blobHolder p {
 	transition: 200ms all;
+}
+
+/*KEYFRAMES*/
+@keyframes spin {
+  0% {
+  	box-shadow: 0 0 1px yellow, 0 0 30px white;
+  }
+  25% {
+  	box-shadow: 0 0 5px white, 0 0 5px yellow;
+  }
+  50% {
+  	box-shadow: 0 0 30px yellow, 0 0 1px white;
+  }
+  75% {
+  	box-shadow: 0 0 5px white, 0 0 5px yellow;
+  }
+  100% {
+  	box-shadow: 0 0 1px yellow, 0 0 30px white;
+  }
 }

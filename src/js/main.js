@@ -220,7 +220,7 @@ myUI = {
 				pageData = createEle("div");
 
 			pageData.className = "pageData";
-			pageData.onload = myUI.evalATH(jData,aTH,d,toolHolder,x,y,blokker);
+			pageData.onload = myUI.evalATH(jData,aTH,d,toolHolder,x,y,blokker,pageData);
 
 			blokker.className = "blokker";
 			blokker.append(xOut,pageData);
@@ -232,21 +232,21 @@ myUI = {
 			body.append(blokker);
 		}
 	},
-	evalATH: function(jData,aTH,d,toolHolder,x,y,blokker){
+	evalATH: function(jData,aTH,d,toolHolder,x,y,blokker,pageData){
 		var header = createEle("h4"), ex, goto;
 
 		if(y === "1"){
 			ex = "Archive";
-			goto = myUI.gotoArchive(jData,aTH,d,toolHolder,x,y,blokker);
+			goto = myUI.gotoArchive(jData,aTH,d,toolHolder,x,y,blokker,pageData);
 		}
 		if(y === "2"){
 			ex = "Settings";
-			goto = myUI.gotoSettings(jData,aTH,d,toolHolder,x,y,blokker);
+			goto = myUI.gotoSettings(jData,aTH,d,toolHolder,x,y,blokker,pageData);
 
 		}
 		if(y === "3"){
 			ex = "Goals";
-			goto = myUI.gotoGoals(jData,aTH,d,toolHolder,x,y,blokker);
+			goto = myUI.gotoGoals(jData,aTH,d,toolHolder,x,y,blokker,pageData);
 		}
 
 		header.innerHTML = ex;
@@ -254,17 +254,100 @@ myUI = {
 		
 		blokker.append(header);
 	},
-	gotoArchive:function(){
-//
-console.log("archive");
+	gotoArchive:function(jData,aTH,d,toolHolder,x,y,blokker,pageData){
+		var aHolder = createEle("div"),
+			theArchive = createEle("div");
+
+		theArchive.className = "theArchive";
+
+		for (var i = 0; i < jData.dateGrid; i++) {
+			var elems = createEle("button");
+
+			elems.innerHTML = i;
+
+			theArchive.append(elems);
+		}
+
+		aHolder.className = "aHolder";
+		aHolder.append(theArchive);
+
+		pageData.append(aHolder);
 	},
-	gotoSettings:function(){
-//
-console.log("Settings");
+	gotoSettings:function(jData,aTH,d,toolHolder,x,y,blokker,pageData){
+		var sHolder = createEle("div"),
+			buttonHolder = createEle("div");
+
+			var clrBtn = createEle("button");
+
+			clrBtn.className = "buttons";
+			clrBtn.innerHTML = "CLEAR DATA";
+			clrBtn.onclick = myUI.clearWarn(jData);
+
+			buttonHolder.className = "buttonHolder";
+			buttonHolder.append(clrBtn);
+
+			sHolder.className = "sHolder";
+			sHolder.append(buttonHolder);
+
+			pageData.append(sHolder); 
 	},
-	gotoGoals:function(){
-//
-console.log("Goals");
+	clearWarn: function(jData){
+		return function(){
+			var warnPage = createEle("div"),
+				xOut = createEle("span"),
+				pQ = createEle("p"),
+				yBtn = createEle("button");
+
+			xOut.innerHTML = "X";
+			xOut.className = "xOut";
+			xOut.onclick = function(){ return warnPage.remove() };
+
+			pQ.innerHTML = "YOU WISH TO CLEAR DATA FOR THIS APPLICATION?<br/>";
+
+			yBtn.innerHTML = "CONTINUE";
+			yBtn.onclick = myUI.clearHistory(jData);
+
+			warnPage.className = "warnPage";
+			warnPage.append(xOut,pQ,yBtn);
+
+			body.append(warnPage);
+		}
+	},
+	clearHistory: function(jData){ 
+		return function(){
+			localStorage.removeItem("jData");
+			setTimeout(function(){
+				location.reload();
+			},1);
+		}
+	},
+	gotoGoals:function(jData,aTH,d,toolHolder,x,y,blokker,pageData){
+		var gHolder = createEle("div"),
+			blckHoldBtn = createEle("button");
+
+			blckHoldBtn.innerHTML = "🕳️";
+			blckHoldBtn.onclick = myUI.launchBlackHole(jData,gHolder);
+
+			gHolder.className = "gHolder";
+			gHolder.append(blckHoldBtn);
+
+			pageData.append(gHolder);
+	},
+	launchBlackHole: function(jData,gHolder){
+		return function(){
+			gHolder.innerHTML = "";
+			var space = createEle("div"),
+				hole = createEle("div");
+
+			hole.className = "hole";
+
+			space.className = "space";
+			space.append(hole);
+
+			setTimeout(function(){
+				gHolder.append(space);
+			},1);
+		}
 	},
 	updateList: function(jData,listHolder,toolHolder){
 		var d = new Date();
@@ -317,11 +400,12 @@ console.log("Goals");
 		x.remove();
 		task.style.background = "darkgrey";
 
-		saveLS("jData",jData);
 		toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
+		listHolder.innerHTML = "";
 		setTimeout(function(){
-			task.onclick = myUI.listSelection(jData,task,i,toolHolder);
-		},2);
+			saveLS("jData",jData);
+			myUI.updateList(jData,listHolder,toolHolder);
+		},1);
 	},
 	listSelection: function(jData,task,i,toolHolder){
 		return function(){
@@ -358,7 +442,8 @@ console.log("Goals");
 
 			bObj.className = "bObj";
 			bObj.style.opacity = 0;
-			bObj.onclick = myUI.getData(jData, bObj, i, label,fd);
+			bObj.onclick = myUI.getData(jData,bObj,i,label,fd);
+			bObj.onmouseover = myUI.mOverObj(jData,bObj,i,label,fd);
 			bObj.style.transitionDelay = i+"0ms";
 			bObj.append(label);
 
@@ -373,6 +458,21 @@ console.log("Goals");
 			} 
 		},666);
 	},
+	mOverObj: function(jData,bObj,i,label,fd){
+		return function(){
+			var holeBtn = createEle("div");
+
+			holeBtn.innerHTML = "🕳️";
+
+			bObj.append(holeBtn);
+			bObj.onmouseout = myUI.mOutObj(jData,bObj,i,label,fd,holeBtn);
+		}
+	},
+	mOutObj: function(jData,bObj,i,label,fd,holeBtn){
+		return function(){
+			//holeBtn.remove();
+		}
+	},
 	getData: function(jData, bObj, i, label,fd){
 		return function(){
 			var lnth = myHeight() - 80,
@@ -382,7 +482,7 @@ console.log("Goals");
 				pattern += "<p style='padding:5px 50px;background:silver;height:90%;margin:5px;'>"+ jData.journal[i].content+ "</p></div>";
 
 			var popup = window.open("","msg", "width="+wdth+",height="+lnth+"", "_top");
-			var alrt = "Preparing to close window for entry date: " + fd + ", if you haven't printed, now is you're chance to do so";
+			var alrt = "Preparing to close window for entry date: " + fd + "!";
 
 			if(popup.document.body.innerHTML != ""){
 				popup.onbeforeunload = function(e){
