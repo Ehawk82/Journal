@@ -443,7 +443,6 @@ myUI = {
 			bObj.className = "bObj";
 			bObj.style.opacity = 0;
 			bObj.onclick = myUI.getData(jData,bObj,i,label,fd);
-			bObj.onmouseover = myUI.mOverObj(jData,bObj,i,label,fd);
 			bObj.style.transitionDelay = i+"0ms";
 			bObj.append(label);
 
@@ -457,21 +456,6 @@ myUI = {
 				bH[k].style.opacity = 1;
 			} 
 		},666);
-	},
-	mOverObj: function(jData,bObj,i,label,fd){
-		return function(){
-			var holeBtn = createEle("div");
-
-			holeBtn.innerHTML = "🕳️";
-
-			bObj.append(holeBtn);
-			bObj.onmouseout = myUI.mOutObj(jData,bObj,i,label,fd,holeBtn);
-		}
-	},
-	mOutObj: function(jData,bObj,i,label,fd,holeBtn){
-		return function(){
-			//holeBtn.remove();
-		}
 	},
 	getData: function(jData, bObj, i, label,fd){
 		return function(){
