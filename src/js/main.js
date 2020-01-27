@@ -242,7 +242,6 @@ myUI = {
 		if(y === "2"){
 			ex = "Settings";
 			goto = myUI.gotoSettings(jData,aTH,d,toolHolder,x,y,blokker,pageData);
-
 		}
 		if(y === "3"){
 			ex = "Goals";
@@ -371,7 +370,7 @@ myUI = {
 			task.setAttribute("data-index", i);
 
 			if(jData.stepGrid[i][1] === false ){
-				task.style.background = "darkgrey";
+				task.style.background = "#8F99A6";
 				task.onclick = myUI.listSelection(jData,task,i,toolHolder);
 			} else {
 				task.style.background = "lightgrey";
@@ -398,7 +397,7 @@ myUI = {
 		jData.score = jData.score - jData.stepGrid[i][2];
 
 		x.remove();
-		task.style.background = "darkgrey";
+		task.style.background = "#8F99A6";
 
 		toolHolder.innerHTML = "DAILY SCORE: " + jData.score;
 		listHolder.innerHTML = "";
