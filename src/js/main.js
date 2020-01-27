@@ -280,7 +280,7 @@ myUI = {
 			var clrBtn = createEle("button");
 
 			clrBtn.className = "buttons";
-			clrBtn.innerHTML = "CLEAR DATA";
+			clrBtn.innerHTML = "CLEAR ALL";
 			clrBtn.onclick = myUI.clearWarn(jData);
 
 			buttonHolder.className = "buttonHolder";
@@ -289,7 +289,7 @@ myUI = {
 			sHolder.className = "sHolder";
 			sHolder.append(buttonHolder);
 
-			pageData.append(sHolder); 
+			pageData.append(sHolder);
 	},
 	clearWarn: function(jData){
 		return function(){
@@ -302,9 +302,9 @@ myUI = {
 			xOut.className = "xOut";
 			xOut.onclick = function(){ return warnPage.remove() };
 
-			pQ.innerHTML = "YOU WISH TO CLEAR DATA FOR THIS APPLICATION?<br/>";
+			pQ.innerHTML = "YOU WISH TO CLEAR ALL DATA FOR THIS PROGRAM?<br/>";
 
-			yBtn.innerHTML = "CONTINUE";
+			yBtn.innerHTML = "🗑️";
 			yBtn.onclick = myUI.clearHistory(jData);
 
 			warnPage.className = "warnPage";
