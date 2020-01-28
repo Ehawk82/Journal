@@ -1,5 +1,13 @@
-var myUI, jdata, taskArr;
+var myUI, jdata, taskArr, dateMark, d = new Date();
 
+dateMark = { 0: {
+	time: d,
+	lastUpdate: d,
+	score: 0,
+	taskMark: {},
+	dBool: false,
+	mood: 5 }
+}
 taskArr = [
 	"Make your bed",
 	"Brush your teeth",
@@ -33,12 +41,12 @@ taskArr = [
 	"Study a topic of your choice"
 ];
 /*
-Environmental*****
-Emotional*****
-Physical*****
-Social*****
-Intellectual*****
-Spiritual*****
+	Environmental [*****]
+	Emotional [*****]
+	Physical [*****]
+	Social [*****]
+	Intellectual [*****]
+	Spiritual [*****]
 */
 jdata = {
 	timestamp: 0,
@@ -48,6 +56,7 @@ jdata = {
 	journal: [],
 	journalEntries: 0,
 	dateGrid: {},
+	gridCount: -1,
 	steps: 10,
 	stepGrid: {
 		0: {0: taskArr[0],1: false,2: 17,3:"Environmental"},
@@ -90,17 +99,17 @@ jdata = {
 
 myUI = {
 	init: function(){
-		var jData = parseLS("jData"),
-			d = new Date();
+		var jData = parseLS("jData");
 
 		if(!jData || jData === null) {
 			LSinit("jData", jdata);
 			location.reload();
 		} else {
-			if(jData.dateGrid.length){
-				console.log("yes");
-			}else{
-				console.log("no");
+			if(jData.gridCount === -1){
+				jData.gridCount = 0;
+				jData.dateGrid = dateMark;
+				saveLS("jData",jData);
+				console.log("should only work once");
 			}			
 			myUI.mainLoadout(jData,d);
 		}
@@ -264,10 +273,10 @@ myUI = {
 
 		theArchive.className = "theArchive";
 
-		for (var i = 0; i < jData.dateGrid; i++) {
-			var elems = createEle("button");
-
-			elems.innerHTML = i;
+		for (var i = 0; i < jData.gridCount + 1; i++) {
+			var elems = createEle("p");
+			var fTime = formatDateObject(jData.dateGrid[i].time);
+			elems.innerHTML = fTime;
 
 			theArchive.append(elems);
 		}
