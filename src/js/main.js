@@ -97,6 +97,11 @@ myUI = {
 			LSinit("jData", jdata);
 			location.reload();
 		} else {
+			if(jData.dateGrid.length){
+				console.log("yes");
+			}else{
+				console.log("no");
+			}			
 			myUI.mainLoadout(jData,d);
 		}
 	},
