@@ -61,7 +61,7 @@ ____
 
 ## Todo
 
-- [x] Import personal node_module
+- [x] Import personal node_module: gScript2020
 - [x] Initialize user JSON 
 - [x] Start button
 - [x] Tools holder
@@ -80,6 +80,7 @@ ____
 - [ ] Secure Storage
 - [ ] Other tools to be added in the coming weeks
 - [x] npm init for index.js helloworld
+- [x] npm node_module: text_audit
 
 
 ![Progress](https://progress-bar.dev/3/)
