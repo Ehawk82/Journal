@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Ehawk82/Journal#readme",
   "devDependencies": {
-    "gscript2020": "git+https://github.com/Ehawk82/gScript2020.git"
+    "gscript2020": "git+https://github.com/Ehawk82/gScript2020.git",
+    "text_audit": "^0.9.3"
   }
 }
