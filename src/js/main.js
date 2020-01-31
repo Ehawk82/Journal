@@ -40,14 +40,7 @@ taskArr = [
 	"Stargaze/Watch sunset",
 	"Study a topic of your choice"
 ];
-/*
-	Environmental [*****]
-	Emotional [*****]
-	Physical [*****]
-	Social [*****]
-	Intellectual [*****]
-	Spiritual [*****]
-*/
+
 jdata = {
 	timestamp: 0,
 	collections: {},

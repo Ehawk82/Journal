@@ -2,9 +2,11 @@
   "name": "journal",
   "version": "1.0.0",
   "description": "An app with emotional wellness and self-care routine themes",
-  "main": "index.js",
+  "main": "src/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "audit": "text_audit -t Emotional Environmental Physical Spiritual Intellectual Social TODO FIXME CHECKME TESTME",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/js/index.js"
   },
   "repository": {
     "type": "git",
