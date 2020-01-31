@@ -92,7 +92,7 @@ ____
   * [x] text_audit set up to check for debug and item tracking
 
 
-![Progress](https://progress-bar.dev/3/)
+![Progress](https://progress-bar.dev/6/)
 
 [Contents](#contents)
 
