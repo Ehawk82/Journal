@@ -68,22 +68,28 @@ ____
 - [x] Can go fullscreen
 - [x] Can close fullscreen
 - [x] Archives button -> archives page
-  * [x] shows archived dates
-  * [ ] resets and logs old dates upon startup
+  * [x] Shows archived dates
+  * [ ] Resets and logs old dates upon startup
 - [x] Daily file startup and validation
 - [x] Questionaire JSON
-- [ ] Moods button -> moods page
+- [ ] Moods button -> moods tab on top of home page
+  * [x] Mood item in JSON 
 - [ ] Date checker to check and save each date daily
 - [ ] Previous daily task gets copied on to archive when the date doesn't match the date checker
 - [x] Active daily task page appears on home page, if not completed, missing elements will collect in the home page display
 - [ ] Journal feature(textarea)
-- [ ] Task/Scenario goals button -> page 
+- [x] Task/Scenario goals button -> page
+  * [x] Black hole feature
+    + [ ] Keyframes and animations
+    + [ ] Deleted items show up on dashboard 
+  * [ ] Personal goals
+  * [ ] Charts and Bars
 - [ ] Delete archived file button - warn page
 - [ ] Secure Storage
 - [ ] Other tools to be added in the coming weeks
 - [x] npm init for index.js helloworld
 - [x] npm node_module: text_audit
-- [x] text_audit set up to check for debug and item tracking
+  * [x] text_audit set up to check for debug and item tracking
 
 
 ![Progress](https://progress-bar.dev/3/)
